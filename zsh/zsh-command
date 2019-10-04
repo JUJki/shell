@@ -1,0 +1,23 @@
+alias gupdate="gco master && ggpull && gco staging && ggpull && gco develop && ggpull && gfa"
+
+gstag () {
+   git checkout staging
+   git pull origin "$(git_current_branch)"
+   git checkout develop
+   git pull origin "$(git_current_branch)"
+   git fetch --all --prune
+   git checkout -b deploy-staging/$1
+   git rebase staging
+   git push origin "$(git_current_branch)"
+ }
+ 
+ gmaster () {
+   git checkout master
+   git pull origin "$(git_current_branch)"
+   git checkout stagingæ
+   git pull origin "$(git_current_branch)"
+   git fetch --all --prune
+   git checkout -b deploy-master/$1
+   git rebase master
+   git push origin "$(git_current_branch)"
+ }
