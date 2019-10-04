@@ -1,0 +1,9 @@
+plugins=(
+   git
+   gitfast
+   node
+   npm
+   yarn
+   docker
+   docker-compose
+)
